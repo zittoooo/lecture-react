@@ -14,19 +14,14 @@ export default class Controller {
   subscribeViewEvents() {
     this.searchFormView.on("@submit", (event) =>
       this.search(event.detail.value)
-    );
-    // TODO
-
-    this.searchFormView.on("@reset", (event) =>
-      this.remove()
-    );
+    ).on("@reset", () => this.reset());
   }
 
   search(searchKeyword) {
     console.log(tag, "search", searchKeyword);
   }
 
-  remove() {
-    console.log(tag, "remove");
+  reset() {
+    console.log(tag, "reset");
   }
 }
