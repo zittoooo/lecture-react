@@ -40,8 +40,7 @@ export default class Controller {
 
     this.historyListView.on("@click", (event) =>
       this.search(event.detail.value)
-    );
-    // TODO
+    ).on("@remove", (event)=> this.removeHistory(event.detail.value));
   }
 
   search(keyword) {
@@ -67,7 +66,8 @@ export default class Controller {
   }
 
   removeHistory(keyword) {
-    // TODO
+    this.store.removeHistory(keyword);
+    this.render();
   }
 
   render() {
