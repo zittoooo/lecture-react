@@ -7,5 +7,11 @@ export default class Controller {
     this.store = store;
 
     this.searchFormView = searchFormView;
+
+  constructor(store, {searchFormView}) {
+    this.store = store;
+
+    this.searchFormView = searchFormView;
+    // TODO
   }
 }
