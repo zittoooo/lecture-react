@@ -17,5 +17,9 @@ export default class Controller {
 
   search(keyword) {
     console.log(tag, keyword);
+
+  constructor(store, {searchFormView}) {
+    this.store = store;
+    this.searchFormView = searchFormView;
   }
 }

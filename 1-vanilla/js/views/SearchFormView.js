@@ -1,4 +1,5 @@
 import { on, qs } from "../helpers.js";
+import { qs, on } from "../helpers.js";
 import View from "./View.js";
 
 const tag = "[SearchFormView]";
@@ -11,6 +12,7 @@ export default class SearchFormView extends View {
 
     this.inputElement = qs("[type=text]", this.element);
     this.resetElement = qs("[type=reset]", this.element);
+    this.inputElement = qs("[type=text]", this.element);
 
     this.showResetButton(false);
     this.bindEvents();
@@ -37,4 +39,5 @@ export default class SearchFormView extends View {
       const {value} = this.inputElement;
       this.emit("@submit", {value}); // 이벤트이름, data(검색어) 전달
   }
+
 }
