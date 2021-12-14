@@ -7,19 +7,20 @@ export default class Controller {
     this.store = store;
 
     this.searchFormView = searchFormView;
-    // TODO
     this.subscribeViewEvents();
   }
 
   subscribeViewEvents() {
-    this.searchFormView.on('@submit', event => this.search(event.detail.value));
-  };
+    this.searchFormView.on("@submit", (event) =>
+      this.search(event.detail.value)
+    ).on("@reset", () => this.reset());
+  }
 
-  search(keyword) {
-    console.log(tag, keyword);
+  search(searchKeyword) {
+    console.log(tag, "search", searchKeyword);
+  }
 
-  constructor(store, {searchFormView}) {
-    this.store = store;
-    this.searchFormView = searchFormView;
+  reset() {
+    console.log(tag, "reset");
   }
 }
