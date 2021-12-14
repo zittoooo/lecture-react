@@ -7,7 +7,6 @@ export default class Controller {
     this.store = store;
 
     this.searchFormView = searchFormView;
-
     this.subscribeViewEvents();
   }
 

@@ -1,4 +1,5 @@
 import { on, qs } from "../helpers.js";
+import { qs, on } from "../helpers.js";
 import View from "./View.js";
 
 const tag = "[SearchFormView]";
@@ -11,6 +12,7 @@ export default class SearchFormView extends View {
 
     this.inputElement = qs("[type=text]", this.element);
     this.resetElement = qs("[type=reset]", this.element);
+    this.inputElement = qs("[type=text]", this.element);
 
     this.showResetButton(false);
     this.bindEvents();
@@ -24,7 +26,7 @@ export default class SearchFormView extends View {
     on(this.inputElement, "keyup", () => this.handleKeyup());
     this.on("submit", (event) => this.handleSubmit(event));
     // TODO
-    on(this.resetElement, "click", () => this.handleReset());  // 이거 안됨
+    on(this.resetElement, "click", () => this.handleReset());
     // this.on("reset", () => this.handleReset());
   }
 
@@ -49,4 +51,12 @@ export default class SearchFormView extends View {
     // this.inputElement.value="";
     this.emit("@reset" , 1);
   }
+
+  handleSubmit(event) {
+      event.preventDefault();
+      console.log(tag, "handleSubmit");
+      const {value} = this.inputElement;
+      this.emit("@submit", {value}); // 이벤트이름, data(검색어) 전달
+  }
+
 }
