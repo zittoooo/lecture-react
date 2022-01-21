@@ -1,3 +1,5 @@
+import store from './js/store.js'
+
 class App extends React.Component {
   constructor() {
     super();
@@ -11,6 +13,13 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log('handleSubmit', this.state.searchKeyword);
+
+    this.search(this.state.searchKeyword);
+  }
+
+  search(searchKeyword){
+    const searchResult = store.search(searchKeyword);
+    this.setState({ searchResult });   // 상태 업데이트
   }
 
   handleReset() {
@@ -61,8 +70,19 @@ class App extends React.Component {
             {this.state.searchKeyword.length > 0 && (<button type="reset" className="btn-reset"></button>)}
           </form>
           <div className="content">
-            {this.state.searchResult.length > 0 ? (<div>TODO: 검색 결과 목록 표시하기</div>) :
-              (<div className="empty-box">검색 결과가 없습니다</div> )}
+            {this.state.searchResult.length > 0 ? (
+              <ul>
+                {this.state.searchResult.map(item => {
+                  return (
+                    <li className="result">
+                      <img src={item.imageUrl} alt={item.name}></img>
+                      <p>{item.name}</p>
+                    </li>
+                  )
+                })}
+              </ul>
+            ) :
+              (<div className="empty-box">검색 결과가 없습니다</div>)}
           </div>
         </div>
       </>
